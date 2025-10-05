@@ -76,6 +76,12 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  
+  --color-aqi: var(--chart-1);
+  --color-pm25: var(--chart-2);
+  --color-no2: var(--chart-3);
+  --color-o3: var(--chart-4);
+  --color-so2: var(--chart-5);
 }
 
 .dark {
@@ -114,9 +120,36 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--border);
+    outline-color: color-mix(in srgb, var(--ring) 50%, transparent);
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+  .leaflet-container {
+    height: 100%;
+    width: 100%;
+  }
+
+  .pollution-marker {
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .event-marker {
+    background: transparent !important;
+    border: none !important;
+  }
+
+  /* Custom popup styles */
+  .leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .leaflet-popup-content {
+    margin: 12px;
+    line-height: 1.4;
   }
 }
